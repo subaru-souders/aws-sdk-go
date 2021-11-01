@@ -8506,6 +8506,15 @@ type FlinkRunConfiguration struct {
 	// this parameter, AllowNonRestoredState will be set to false, even if it was
 	// previously set to true.
 	AllowNonRestoredState *bool `type:"boolean"`
+
+	// Timeout values for a Flink application, used in `wait.go`. Allows for dynamic timeout configuration, rather than a hardcoded value (previously was 5).
+	// Defaults to 5 if not defined in the FlinkRunConfiguration of a new kinesisanalyticsv2 resource. Defaulting conditional defined in `application.go`.
+	ApplicationDeletedTimeout *int64 `min:"1" type:"integer"`
+	ApplicationStartedTimeout *int64 `min:"1" type:"integer"`
+	ApplicationStoppedTimeout *int64 `min:"1" type:"integer"`
+	ApplicationUpdatedTimeout *int64 `min:"1" type:"integer"`
+	SnapshotCreatedTimeout *int64 `min:"1" type:"integer"`
+	SnapshotDeletedTimeout *int64 `min:"1" type:"integer"`
 }
 
 // String returns the string representation.
